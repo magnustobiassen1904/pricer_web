@@ -1,0 +1,10 @@
+<!-- PLACEHOLDER badge. Before launch, replace with Apple's OFFICIAL "Download on the
+     App Store" badge (required by Apple's marketing guidelines):
+     https://developer.apple.com/app-store/marketing/guidelines/#section-badges -->
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="54" viewBox="0 0 180 54" role="img" aria-label="Download on the App Store">
+  <rect x="0.5" y="0.5" width="179" height="53" rx="11" fill="#000" stroke="#A6A6A6"/>
+  <!-- Apple glyph -->
+  <path fill="#fff" d="M33.6 27.7c0-3 2.4-4.4 2.5-4.5-1.4-2-3.5-2.3-4.3-2.3-1.8-.2-3.5 1.1-4.4 1.1-.9 0-2.3-1.1-3.8-1-1.9 0-3.7 1.1-4.7 2.9-2 3.5-.5 8.7 1.4 11.6.9 1.4 2 3 3.5 2.9 1.4-.1 1.9-.9 3.6-.9 1.7 0 2.1.9 3.6.9 1.5 0 2.4-1.4 3.3-2.8 1-1.6 1.5-3.2 1.5-3.3-.1 0-2.8-1.1-2.8-4.2zM30.7 18.9c.8-1 1.3-2.3 1.2-3.7-1.1.1-2.5.8-3.3 1.7-.7.8-1.4 2.2-1.2 3.5 1.3.1 2.5-.6 3.3-1.5z"/>
+  <text x="48" y="21" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="9" letter-spacing="0.3">Download on the</text>
+  <text x="48" y="39" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">App Store</text>
+</svg>
