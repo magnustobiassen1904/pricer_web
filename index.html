@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pricer — Know the deal.</title>
-  <meta name="description" content="Photograph any item and get an instant AI-powered second-hand value: what it's worth to buy or sell, price history, and future estimates. Snap it. Price it. Know the deal.">
+  <meta name="description" content="Photograph any item and get an instant AI second-hand valuation: what it's worth to buy or sell, price history, and future estimates. Snap it. Price it. Know the deal.">
+  <link rel="icon" type="image/png" href="assets/icon.png">
 
-  <!-- Open Graph / social preview -->
   <meta property="og:title" content="Pricer — Know the deal.">
   <meta property="og:description" content="Snap a photo of any item and get an instant second-hand value — buy, sell, and know what it's really worth.">
   <meta property="og:type" content="website">
@@ -14,9 +14,6 @@
   <!-- PLACEHOLDER: add a 1200×630 social card at assets/og-card.png -->
   <meta property="og:image" content="https://getpricerapp.com/assets/og-card.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,7 +22,7 @@
   <header class="nav" id="top">
     <div class="container nav-inner">
       <a href="#top" class="brand">
-        <span class="brand-mark">P</span>
+        <img src="assets/logo-mark.png" alt="Pricer">
         <span class="brand-name">Pricer</span>
       </a>
       <nav class="nav-links">
@@ -59,18 +56,39 @@
         </div>
       </div>
 
+      <!-- Faithful recreation of the app's ResultsScreen -->
       <div class="hero-art">
-        <!-- PLACEHOLDER: replace with a real app screenshot (assets/screen-hero.png) -->
         <div class="phone">
           <div class="phone-screen">
-            <div class="mock-verdict">
-              <span class="mock-label">Estimated value</span>
-              <span class="mock-number">1&nbsp;850 kr</span>
-              <span class="mock-sub">Good deal to buy below 1&nbsp;500 kr</span>
+            <div class="scr-item">Omega Speedmaster</div>
+            <div class="scr-pose"><span class="on">Buy</span><span>Sell</span></div>
+
+            <div class="scr-verdict">
+              <span class="lbl">Estimated value</span>
+              <span class="num">38&thinsp;500&nbsp;kr</span>
+              <span class="sub">▲ Fair deal below 35&thinsp;000 kr</span>
             </div>
-            <div class="mock-chart"></div>
-            <div class="mock-row"><span>Resale demand</span><b>High</b></div>
-            <div class="mock-row"><span>12-mo trend</span><b class="up">▲ holding</b></div>
+
+            <div class="scr-stats">
+              <div class="scr-stat"><div class="s-lbl">Demand</div><div class="s-val">High</div></div>
+              <div class="scr-stat"><div class="s-lbl">12-mo</div><div class="s-val up">▲ 6%</div></div>
+              <div class="scr-stat"><div class="s-lbl">Liquidity</div><div class="s-val">Fast</div></div>
+            </div>
+
+            <div class="scr-chart">
+              <div class="c-lbl">Price trajectory</div>
+              <div class="scr-trace">
+                <svg viewBox="0 0 260 78" preserveAspectRatio="none" aria-hidden="true">
+                  <!-- past: gold solid -->
+                  <polyline points="4,60 44,52 84,56 124,34" fill="none" stroke="#E5C97A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- future: blue, projected -->
+                  <polyline points="124,34 168,40 210,22 256,12" fill="none" stroke="#4A7BFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85" stroke-dasharray="1 0"/>
+                  <!-- "now" dot -->
+                  <circle cx="124" cy="34" r="5" fill="#E5C97A"/>
+                  <circle cx="256" cy="12" r="4" fill="#4A7BFF"/>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,19 +125,19 @@
       <h2 class="section-title">Built to tell you the truth</h2>
       <div class="cards">
         <div class="card">
-          <div class="card-icon">⌁</div>
+          <div class="card-tag">kr</div>
           <h3>An honest number</h3>
-          <p>Pricer gives you a straight second-hand value — no inflated MSRP, no sales pitch. Just what the item is realistically worth today.</p>
+          <p>A straight second-hand value — no inflated MSRP, no sales pitch. What the item is realistically worth today.</p>
         </div>
         <div class="card">
-          <div class="card-icon">↗</div>
+          <div class="card-tag">↗</div>
           <h3>Where the price is heading</h3>
-          <p>See how the value has moved and where it's likely to go, so you know whether to buy now, sell now, or wait.</p>
+          <p>See how the value has moved and where it's likely to go — so you know whether to buy now, sell now, or wait.</p>
         </div>
         <div class="card">
-          <div class="card-icon">◎</div>
-          <h3>Buy & sell tips</h3>
-          <p>Practical guidance for each item — what a fair offer looks like, what to ask, and the costs that quietly eat your margin.</p>
+          <div class="card-tag">◎</div>
+          <h3>Buy &amp; sell tips</h3>
+          <p>Practical guidance per item: what a fair offer looks like, what to ask, and the costs that quietly eat your margin.</p>
         </div>
       </div>
     </div>
@@ -130,21 +148,9 @@
     <div class="container">
       <h2 class="section-title">What people say</h2>
       <div class="cards">
-        <div class="card review">
-          <div class="stars">★★★★★</div>
-          <p class="quote">PLACEHOLDER — real review text.</p>
-          <p class="reviewer">— Reviewer, App Store</p>
-        </div>
-        <div class="card review">
-          <div class="stars">★★★★★</div>
-          <p class="quote">PLACEHOLDER — real review text.</p>
-          <p class="reviewer">— Reviewer, App Store</p>
-        </div>
-        <div class="card review">
-          <div class="stars">★★★★★</div>
-          <p class="quote">PLACEHOLDER — real review text.</p>
-          <p class="reviewer">— Reviewer, App Store</p>
-        </div>
+        <div class="card review"><div class="stars">★★★★★</div><p class="quote">PLACEHOLDER — real review text.</p><p class="reviewer">— Reviewer, App Store</p></div>
+        <div class="card review"><div class="stars">★★★★★</div><p class="quote">PLACEHOLDER — real review text.</p><p class="reviewer">— Reviewer, App Store</p></div>
+        <div class="card review"><div class="stars">★★★★★</div><p class="quote">PLACEHOLDER — real review text.</p><p class="reviewer">— Reviewer, App Store</p></div>
       </div>
     </div>
   </section>
@@ -174,7 +180,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark">P</span>
+        <img src="assets/logo-mark.png" alt="Pricer">
         <span class="brand-name">Pricer</span>
       </div>
       <nav class="footer-links">
