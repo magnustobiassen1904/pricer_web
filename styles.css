@@ -73,6 +73,7 @@ h1, h2, h3 { line-height: 1.08; letter-spacing: -0.03em; margin: 0; font-weight:
 }
 .btn:active { transform: translateY(1px); }
 .btn-sm { padding: 11px 20px; font-size: 15px; border-radius: 14px; }
+.btn-lg { padding: 18px 34px; font-size: 18px; border-radius: 18px; }
 .btn-primary { background: var(--blue); color: #fff; }
 .btn-primary:hover { background: #3B69EE; }
 .btn-gold {
@@ -138,6 +139,18 @@ h1, h2, h3 { line-height: 1.08; letter-spacing: -0.03em; margin: 0; font-weight:
   border-radius: 30px;
   padding: 22px 16px 18px;
   display: flex; flex-direction: column; gap: 14px;
+}
+/* Real screenshot variant: fill the bezel, clip the iOS status bar off the top */
+.phone-screen.shot {
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 1320 / 2678;
+}
+.phone-screen.shot img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  display: block;
 }
 .scr-item { color: var(--offwhite); font-size: 18px; font-weight: 900; letter-spacing: -0.02em; }
 .scr-pose {
