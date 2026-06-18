@@ -18,6 +18,8 @@
 </head>
 <body>
 
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <!-- ── Sticky nav ───────────────────────────────────────────────────────── -->
   <header class="nav" id="top">
     <div class="container nav-inner">
@@ -36,21 +38,20 @@
     </div>
   </header>
 
+  <main id="main">
+
   <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">AI second-hand valuation</p>
         <h1 class="hero-title">Snap it.<br>Price it.<br><span class="accent">Know the deal.</span></h1>
         <p class="hero-pitch">
-          Point your camera at anything — a watch, a couch, a pair of sneakers — and
-          Pricer tells you what it's worth on the second-hand market. What to pay,
-          what to ask, where the price is heading.
+          Point your camera at anything and Pricer tells you what it's worth on the market.
         </p>
         <div class="hero-cta">
           <!-- Pre-launch: waitlist CTA. Swap back to the App Store badge at launch. -->
           <a href="https://mailchi.mp/tobiassendevelopment/pricer-venteliste" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Join the waitlist</a>
-          <p class="hero-note">Free to try · 1 scan on the house</p>
+          <p class="hero-note">Coming soon to the App&nbsp;Store</p>
         </div>
       </div>
 
@@ -68,46 +69,67 @@
   <!-- ── How it works ─────────────────────────────────────────────────────── -->
   <section class="how" id="how">
     <div class="container">
-      <h2 class="section-title">Three taps to a real number</h2>
+      <div class="section-head">
+        <span class="section-kicker">How it works</span>
+        <h2 class="section-title">Three taps to a real number</h2>
+      </div>
       <div class="steps">
         <div class="step">
+          <div class="shot"><img src="assets/how-1.jpg" alt="Pricer reading a photo of AirPods Pro: detecting item" loading="lazy"></div>
           <span class="step-num">1</span>
           <h3>Snap a photo</h3>
-          <p>Take a picture of any physical item. No typing, no model numbers — the photo is enough.</p>
+          <p>Point your camera at any item. No typing, no model numbers.</p>
         </div>
         <div class="step">
+          <div class="shot"><img src="assets/how-2.jpg" alt="Pricer recognising AirPods Pro and gathering market insights" loading="lazy"></div>
           <span class="step-num">2</span>
           <h3>Pricer identifies it</h3>
-          <p>The app recognises the item, brand, and condition, then reads it against the second-hand market.</p>
+          <p>It recognises the item, brand, and condition in seconds.</p>
         </div>
         <div class="step">
+          <div class="shot"><img src="assets/how-3.jpg" alt="Pricer result: sell the AirPods Pro for 2 349 kr" loading="lazy"></div>
           <span class="step-num">3</span>
           <h3>Know the deal</h3>
-          <p>Get a clear value, price history, a future estimate, and buying or selling tips — in seconds.</p>
+          <p>A clear value, the price trend, and what to do next.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Scan anything (interactive showcase) ─────────────────────────────── -->
+  <section class="showcase" id="showcase">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Scan anything</span>
+        <h2 class="section-title">If you can photograph it, Pricer can price it.</h2>
+      </div>
+      <!-- JS fills .showcase-stage based on the controls (layout + style) -->
+      <div class="showcase-stage" data-layout="marquee" data-style="glass"></div>
     </div>
   </section>
 
   <!-- ── Feature cards ────────────────────────────────────────────────────── -->
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title">Built to tell you the truth</h2>
+      <div class="section-head">
+        <span class="section-kicker">Why Pricer</span>
+        <h2 class="section-title">Built to tell you the truth</h2>
+      </div>
       <div class="cards">
         <div class="card">
           <div class="card-tag">kr</div>
           <h3>An honest number</h3>
-          <p>A straight second-hand value — no inflated MSRP, no sales pitch. What the item is realistically worth today.</p>
+          <p>A straight resale value — no inflated MSRP. Just what it's worth today.</p>
         </div>
         <div class="card">
           <div class="card-tag">↗</div>
           <h3>Where the price is heading</h3>
-          <p>See how the value has moved and where it's likely to go — so you know whether to buy now, sell now, or wait.</p>
+          <p>How the value has moved and where it's going — buy, sell, or wait.</p>
         </div>
         <div class="card">
           <div class="card-tag">◎</div>
           <h3>Buy &amp; sell tips</h3>
-          <p>Practical guidance per item: what a fair offer looks like, what to ask, and the costs that quietly eat your margin.</p>
+          <p>A fair offer, what to ask, and the costs that quietly eat your margin.</p>
         </div>
       </div>
     </div>
@@ -144,6 +166,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ───────────────────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container footer-inner">
@@ -159,6 +183,56 @@
       <p class="copyright">© 2026 Tobiassen Development</p>
     </div>
   </footer>
+
+  <script>
+    // Subtle nav elevation once the page leaves the hero — dependency-free.
+    (function () {
+      var nav = document.querySelector('.nav');
+      if (!nav) return;
+      var ticking = false;
+      function update() {
+        nav.classList.toggle('scrolled', window.scrollY > 24);
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+  </script>
+
+  <script>
+    // ── "Scan anything" showcase — renders the item cards into the marquee.
+    (function () {
+      var stage = document.querySelector('.showcase-stage');
+      if (!stage) return;
+
+      var ITEMS = [
+        { img: 'assets/item-iphone.png',  title: 'iPhone 17 Pro Max',     cat: 'Smartphone',       time: 'Today',      price: '12 000' },
+        { img: 'assets/item-airpods.png', title: 'Apple AirPods Pro',      cat: 'Earbuds',          time: 'Today',      price: '2 349'  },
+        { img: 'assets/item-watch.png',   title: 'Omega Seamaster',       cat: 'Watch',            time: '2 days ago', price: '42 500' },
+        { img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=240&h=240&fit=crop&q=80', title: 'Nike Air Max 90', cat: 'Sneakers', time: '3 days ago', price: '899' },
+        { img: 'assets/item-charger.png', title: 'Zaptec EV Charger',     cat: 'Charging station', time: '2 days ago', price: '5 299'  },
+        { img: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=240&h=240&fit=crop&q=80', title: 'Fujifilm X100V', cat: 'Camera', time: '4 days ago', price: '11 900' },
+        { img: 'assets/item-art.png',     title: 'The Creation of Adam',  cat: 'Art reproduction', time: '5 days ago', price: '2 099'  },
+        { img: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=240&h=240&fit=crop&q=80', title: 'Vintage Road Bike', cat: 'Bicycle', time: '6 days ago', price: '4 500' }
+      ];
+
+      function card(it) {
+        return '<article class="sc-card">' +
+          '<img class="sc-thumb" src="' + it.img + '" alt="' + it.title + '" loading="lazy">' +
+          '<div class="sc-body">' +
+            '<h3 class="sc-name">' + it.title + '</h3>' +
+            '<p class="sc-meta">' + it.cat + ' · ' + it.time + '</p>' +
+          '</div>' +
+          '<p class="sc-price">' + it.price + ' <span>kr</span></p>' +
+        '</article>';
+      }
+
+      // Duplicate the run so the marquee loop is seamless.
+      stage.innerHTML = '<div class="sc-track">' + ITEMS.concat(ITEMS).map(card).join('') + '</div>';
+    })();
+  </script>
 
 </body>
 </html>

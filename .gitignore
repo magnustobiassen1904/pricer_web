@@ -1,3 +1,6 @@
 .DS_Store
 *.log
 node_modules/
+
+# Design-tool exports (never commit large zips)
+*.zip
