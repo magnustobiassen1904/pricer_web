@@ -417,21 +417,35 @@ a:focus-visible, .btn:focus-visible, button:focus-visible {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
-  .hero-copy { order: 2; }
-  .hero-art { order: 1; }
+  /* Lead with the headline ("the verdict"), screenshot below — so mobile users
+     instantly grasp what Pricer is instead of meeting a giant phone first. */
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-copy { order: 1; }
+  .hero-art { order: 2; }
   .hero-cta { align-items: center; }
   .eyebrow { margin-left: auto; margin-right: auto; }
   .hero-pitch { margin-left: auto; margin-right: auto; }
-  .steps, .cards { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .cards { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
+  /* How-it-works stays side-by-side (like desktop) but compact — no more
+     full-screen step cards dominating the page. */
+  .steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .step { padding: 14px 12px; }
+  .step .shot { aspect-ratio: 1 / 1; margin-bottom: 12px; border-radius: 12px; }
+  .step-num { width: 32px; height: 32px; font-size: 15px; border-radius: 10px; margin-bottom: 10px; }
+  .step h3 { font-size: 14.5px; margin-bottom: 5px; }
+  .step p { font-size: 12.5px; line-height: 1.42; }
   .showcase-stage[data-layout="grid"] { grid-template-columns: repeat(2, 1fr); }
   .nav-links { display: none; }
 }
 @media (max-width: 480px) {
   .container { padding: 0 20px; }
-  .hero { padding-top: 44px; }
+  .hero { padding-top: 40px; }
   .hero-cta .btn-lg { width: 100%; }
-  .phone { width: 252px; }
+  .phone { width: 200px; }
+  .steps { gap: 9px; }
+  .step { padding: 12px 9px; }
+  .step h3 { font-size: 13.5px; }
+  .step p { font-size: 12px; }
   .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
 }
 
