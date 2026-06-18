@@ -417,23 +417,29 @@ a:focus-visible, .btn:focus-visible, button:focus-visible {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  /* Lead with the headline ("the verdict"), screenshot below — so mobile users
-     instantly grasp what Pricer is instead of meeting a giant phone first. */
-  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
-  .hero-copy { order: 1; }
-  .hero-art { order: 2; }
-  .hero-cta { align-items: center; }
+  /* Hero stacks: headline → pitch → screenshot → CTA. The CTA sits below the
+     phone as the last thing before How it works. display:contents lets the
+     nested CTA reorder alongside the phone. */
+  .hero-inner { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+  .hero-copy { display: contents; }
+  .hero-title { order: 1; }
+  .hero-pitch { order: 2; margin: 0 auto; }
+  .hero-art { order: 3; }
+  .hero-cta { order: 4; align-self: stretch; align-items: center; }
   .eyebrow { margin-left: auto; margin-right: auto; }
-  .hero-pitch { margin-left: auto; margin-right: auto; }
   .cards { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
-  /* How-it-works stays side-by-side (like desktop) but compact — no more
-     full-screen step cards dominating the page. */
-  .steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .step { padding: 14px 12px; }
-  .step .shot { aspect-ratio: 1 / 1; margin-bottom: 12px; border-radius: 12px; }
-  .step-num { width: 32px; height: 32px; font-size: 15px; border-radius: 10px; margin-bottom: 10px; }
-  .step h3 { font-size: 14.5px; margin-bottom: 5px; }
-  .step p { font-size: 12.5px; line-height: 1.42; }
+  /* How it works: full-size cards in an auto-advancing horizontal carousel (JS). */
+  .steps {
+    display: flex; gap: 16px; max-width: none; position: relative;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 6px;
+  }
+  .steps::-webkit-scrollbar { display: none; }
+  .step { flex: 0 0 80%; scroll-snap-align: center; padding: 22px 20px; }
+  .step .shot { aspect-ratio: 4 / 5; margin-bottom: 18px; border-radius: 14px; }
+  .step-num { width: 40px; height: 40px; font-size: 17px; border-radius: 12px; margin-bottom: 14px; }
+  .step h3 { font-size: 18px; margin-bottom: 7px; }
+  .step p { font-size: 14.5px; line-height: 1.5; }
   .showcase-stage[data-layout="grid"] { grid-template-columns: repeat(2, 1fr); }
   .nav-links { display: none; }
 }
@@ -442,10 +448,7 @@ a:focus-visible, .btn:focus-visible, button:focus-visible {
   .hero { padding-top: 40px; }
   .hero-cta .btn-lg { width: 100%; }
   .phone { width: 200px; }
-  .steps { gap: 9px; }
-  .step { padding: 12px 9px; }
-  .step h3 { font-size: 13.5px; }
-  .step p { font-size: 12px; }
+  .step { flex-basis: 84%; }
   .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
 }
 

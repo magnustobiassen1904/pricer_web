@@ -234,5 +234,43 @@
     })();
   </script>
 
+  <script>
+    // ── "How it works" auto-advancing carousel — mobile only (desktop stays a 3-up grid).
+    (function () {
+      var steps = document.querySelector('.steps');
+      if (!steps) return;
+      var mqMobile = window.matchMedia('(max-width: 900px)');
+      var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var timer = null, idx = 0, resumeT = null;
+
+      function cards() { return steps.querySelectorAll('.step'); }
+
+      function goTo(i) {
+        var c = cards(); if (!c.length) return;
+        idx = (i + c.length) % c.length;
+        var card = c[idx];
+        var crect = steps.getBoundingClientRect();
+        var trect = card.getBoundingClientRect();
+        var delta = (trect.left - crect.left) - (steps.clientWidth - card.clientWidth) / 2;
+        steps.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+
+      function start() {
+        stop();
+        if (mqMobile.matches && !mqReduce.matches) timer = setInterval(function () { goTo(idx + 1); }, 3500);
+      }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+      // Pause while the user is swiping, resume a few seconds after they let go.
+      steps.addEventListener('pointerdown', function () { stop(); clearTimeout(resumeT); }, { passive: true });
+      function resume() { clearTimeout(resumeT); resumeT = setTimeout(start, 4500); }
+      steps.addEventListener('pointerup', resume, { passive: true });
+      steps.addEventListener('touchend', resume, { passive: true });
+
+      mqMobile.addEventListener('change', function () { idx = 0; start(); });
+      start();
+    })();
+  </script>
+
 </body>
 </html>
