@@ -4,3 +4,6 @@ node_modules/
 
 # Design-tool exports (never commit large zips)
 *.zip
+
+# Snarvei til prosjektets iCloud-mappe (filer som ikke er kode)
+filer/
